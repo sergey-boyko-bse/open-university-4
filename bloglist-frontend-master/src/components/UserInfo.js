@@ -1,9 +1,9 @@
 import React from 'react'
 
-const UserInfo = ({user, logout}) => {
+const UserInfo = ({ user, logout }) => {
     return (
         <p>
-            {user.name} logged in 
+            {user.name} logged in
             <button onClick={logout}>logout</button>
         </p>
     )

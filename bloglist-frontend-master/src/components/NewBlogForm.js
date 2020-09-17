@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-const NewBlogForm = ({addBlog, handleNotification}) => {
+const NewBlogForm = ({ addBlog, handleNotification }) => {
     const [ title, setTitle] = useState('')
     const [ author, setAuthor] = useState('')
     const [ url, setUrl] = useState('')
@@ -8,15 +8,19 @@ const NewBlogForm = ({addBlog, handleNotification}) => {
     const add = async (event) => {
         event.preventDefault()
         try {
-            await addBlog({title, author, url})
+            await addBlog({ title, author, url })
             setTitle('')
             setAuthor('')
             setUrl('')
         } catch (error) {
-            handleNotification(error)
+            const notification = {
+                message: error.message,
+                type: 'error'
+            }
+            handleNotification(notification)
         }
     }
-    
+
     return (
         <div>
             <form onSubmit={add}>
